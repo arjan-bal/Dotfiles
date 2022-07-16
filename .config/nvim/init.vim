@@ -6,7 +6,6 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'mhartington/oceanic-next'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -22,6 +21,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'onsails/lspkind.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'folke/tokyonight.nvim'
 
 call plug#end()
 
@@ -42,6 +42,8 @@ xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
 " copy to OS's copy register
 nnoremap <leader>y "+y
+" find and replace selected text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 augroup ARJAN
     autocmd!

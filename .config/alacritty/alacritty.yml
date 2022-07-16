@@ -4,6 +4,10 @@ window:
     x: 6
     y: 6
 
+font:
+  normal:
+    family: JetBrains Mono
+
 # Colors (Tokyo Night: Storm variant)
 # Source: https://github.com/zatchheems/tokyo-night-alacritty-theme
 colors:

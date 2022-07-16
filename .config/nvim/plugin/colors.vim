@@ -4,7 +4,6 @@ endif
 
 " Theme
 syntax enable
-colorscheme OceanicNext
+colorscheme tokyonight
 
 highlight Normal guibg=none
-
