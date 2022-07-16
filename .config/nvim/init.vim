@@ -20,12 +20,13 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'jiangmiao/auto-pairs'
 Plug 'onsails/lspkind.nvim'
-Plug 'mortepau/codicons.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 
 call plug#end()
 
 let mapleader = " "
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
 
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>pv :Sex!<CR>
@@ -33,6 +34,14 @@ nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" delete without copying to register
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+" paste without popping from register
+xnoremap <leader>p "_dP
+" copy to OS's copy register
+nnoremap <leader>y "+y
 
 augroup ARJAN
     autocmd!
