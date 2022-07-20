@@ -14,6 +14,7 @@ set undofile
 set scrolloff=8
 set signcolumn=yes
 set colorcolumn=80
+set list listchars=tab:>\ ,trail:-,eol:↵
 
 " Ignore files
 set wildignore+=*.pyc
