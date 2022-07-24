@@ -43,7 +43,7 @@ xnoremap <leader>d "_d
 " paste without popping from register
 xnoremap <leader>p "_dP
 " copy to OS's copy register
-nnoremap <leader>y "+y
+vnoremap <leader>y "+y
 " find and replace selected text
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
