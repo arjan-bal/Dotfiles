@@ -117,15 +117,17 @@ local opts = {
 
 -- Config for each language server.
 
-sumneko_opts = {
-    Lua = {
-        diagnostics = {
-            globals = { "vim" },
-        },
-        workspace = {
-            library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.stdpath("config") .. "/lua"] = true,
+local sumneko_opts = {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" },
+            },
+            workspace = {
+                library = {
+                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                    [vim.fn.stdpath("config") .. "/lua"] = true,
+                },
             },
         },
     },
@@ -135,3 +137,4 @@ require('lspconfig')['pyright'].setup(opts)
 require('lspconfig')['tsserver'].setup(opts)
 require('lspconfig')['rust_analyzer'].setup(opts)
 require('lspconfig')['sumneko_lua'].setup(vim.tbl_deep_extend("force", sumneko_opts, opts))
+require('lspconfig')['jdtls'].setup(opts)
