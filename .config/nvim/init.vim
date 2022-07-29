@@ -24,6 +24,7 @@ Plug 'williamboman/nvim-lsp-installer'
 Plug 'folke/tokyonight.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'numToStr/Comment.nvim'
 
 call plug#end()
 
