@@ -33,7 +33,6 @@ let mapleader = " "
 " set clipboard+=unnamedplus
 
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>pv :Sex!<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 vnoremap J :m '>+1<CR>gv=gv
@@ -54,3 +53,4 @@ augroup ARJAN
     autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
+lua require("config")

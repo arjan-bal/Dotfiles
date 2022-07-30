@@ -1,4 +1,17 @@
-local function setup()
+local M = {}
+
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+
+local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_cmp_ok then
+  return
+end
+
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+
+M.setup = function ()
     -- Symbols taken from VS code codicons.
     local signs = {
         { name = "DiagnosticSignError", text = "" },
@@ -40,8 +53,6 @@ local function setup()
         border = "rounded",
     })
 end
-
-setup()
 
 local function lsp_highlight_document(client, bufnr)
     -- Set autocommands conditional on server_capabilities
@@ -91,7 +102,7 @@ end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -101,39 +112,35 @@ local on_attach = function(client, bufnr)
     lsp_highlight_document(client, bufnr)
 end
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
+function M.enable_format_on_save()
+  vim.cmd [[
+    augroup format_on_save
+      autocmd!
+      autocmd BufWritePre * lua vim.lsp.buf.format({ async = true })
+    augroup end
+  ]]
+  vim.notify "Enabled format on save"
+end
 
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-local opts = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
+function M.disable_format_on_save()
+  M.remove_augroup "format_on_save"
+  vim.notify "Disabled format on save"
+end
 
--- Config for each language server.
+function M.toggle_format_on_save()
+  if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
+    M.enable_format_on_save()
+  else
+    M.disable_format_on_save()
+  end
+end
 
-local sumneko_opts = {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.stdpath("config") .. "/lua"] = true,
-                },
-            },
-        },
-    },
-}
+function M.remove_augroup(name)
+  if vim.fn.exists("#" .. name) == 1 then
+    vim.cmd("au! " .. name)
+  end
+end
 
-require('lspconfig')['pyright'].setup(opts)
-require('lspconfig')['tsserver'].setup(opts)
-require('lspconfig')['rust_analyzer'].setup(opts)
-require('lspconfig')['sumneko_lua'].setup(vim.tbl_deep_extend("force", sumneko_opts, opts))
+vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]]
+
+return M
