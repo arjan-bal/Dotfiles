@@ -44,8 +44,11 @@ nvim_tree.setup {
     ignore = true,
     timeout = 500,
   },
+  renderer = {
+    group_empty = true,
+  },
   view = {
-    width = 30,
+    width = 60,
     height = 30,
     hide_root_folder = false,
     side = "right",
@@ -62,3 +65,5 @@ nvim_tree.setup {
     relativenumber = true,
   },
 }
+
+vim.api.nvim_set_keymap('n', '<leader>pv', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
