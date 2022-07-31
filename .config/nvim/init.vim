@@ -28,6 +28,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'navarasu/onedark.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 
 call plug#end()
 
