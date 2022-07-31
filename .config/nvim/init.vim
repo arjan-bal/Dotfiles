@@ -27,6 +27,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'numToStr/Comment.nvim'
 Plug 'akinsho/bufferline.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 
