@@ -21,13 +21,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'onsails/lspkind.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
-Plug 'folke/tokyonight.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'numToStr/Comment.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'navarasu/onedark.nvim'
 
 call plug#end()
 

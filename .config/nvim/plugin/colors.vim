@@ -4,6 +4,7 @@ endif
 
 " Theme
 syntax enable
-colorscheme tokyonight
-
-highlight Normal guibg=none
+let g:onedark_config = {
+    \ 'style': 'deep',
+\}
+colorscheme onedark
