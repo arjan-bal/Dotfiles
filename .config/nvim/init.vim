@@ -26,6 +26,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'numToStr/Comment.nvim'
+Plug 'akinsho/bufferline.nvim'
 
 call plug#end()
 
@@ -37,6 +38,13 @@ nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+" Cycle between buffers.
+nnoremap L :bn<CR>
+nnoremap H :bp<CR>
+" Create a new blank file in a new buffer.
+nnoremap <C-n> :enew<CR>
+" Close a buffer.
+nnoremap <leader>q :bdelete<CR>
 
 " delete without copying to register
 nnoremap <leader>d "_d
