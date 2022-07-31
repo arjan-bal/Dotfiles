@@ -57,6 +57,8 @@ xnoremap <leader>p "_dP
 vnoremap <leader>y "+y
 " find and replace selected text
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+" go back to normal mode in termial using escape
+tnoremap <Esc> <C-\><C-n>
 
 augroup ARJAN
     autocmd!
