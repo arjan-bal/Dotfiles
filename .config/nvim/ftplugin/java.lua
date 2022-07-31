@@ -113,6 +113,16 @@ local config = {
                 },
                 useBlocks = true,
             },
+            completion = {
+                -- Import ordering similar to IntelliJ, only difference is
+                -- presence of blank line between java and javax imports.
+                importOrder = {
+                    "",
+                    "javax",
+                    "java",
+                    "#",
+                },
+            },
         },
         flags = {
             allow_incremental_sync = true,
