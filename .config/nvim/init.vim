@@ -29,6 +29,7 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'rafamadriz/friendly-snippets'
 
 call plug#end()
 
