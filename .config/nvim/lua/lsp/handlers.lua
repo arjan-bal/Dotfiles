@@ -110,6 +110,14 @@ M.on_attach = function(client, bufnr)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     lsp_keymaps(bufnr)
     lsp_highlight_document(client, bufnr)
+    if client.name == "jdt.ls" then
+        -- Enable this to see refference and implementation counts as virtual text.
+        -- vim.lsp.codelens.refresh()
+         if JAVA_DAP_ACTIVE then
+             require("jdtls").setup_dap { hotcodereplace = "auto" }
+             require("jdtls.dap").setup_dap_main_class_configs()
+         end
+    end
 end
 
 function M.enable_format_on_save()

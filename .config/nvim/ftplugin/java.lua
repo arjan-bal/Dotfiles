@@ -26,6 +26,20 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = home .. '/.cache/jdtls/' .. project_name
 --                                               ^^
 --                                               string concattenation in Lua
+JAVA_DAP_ACTIVE = true
+local bundles = {}
+if JAVA_DAP_ACTIVE then
+    vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/Development/nvim-java/vscode-java-test/server/*.jar"), "\n"))
+    vim.list_extend(
+        bundles,
+        vim.split(
+            vim.fn.glob(
+                home .. "/Development/nvim-java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+            ),
+            "\n"
+        )
+    )
+end
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -139,9 +153,17 @@ local config = {
     --
     -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
     init_options = {
-        bundles = {}
+        bundles = bundles,
     },
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
+
+vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
+vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
+-- Pickup changes in pom files
+vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
+-- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
+vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
+-- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"

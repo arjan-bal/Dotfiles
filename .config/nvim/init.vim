@@ -31,6 +31,10 @@ Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'rafamadriz/friendly-snippets'
 
+" Debugging
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+
 call plug#end()
 
 let mapleader = " "
