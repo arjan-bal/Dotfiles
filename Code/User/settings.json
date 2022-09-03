@@ -1,0 +1,107 @@
+{
+  "C_Cpp.intelliSenseEngine": "Disabled",
+  "workbench.iconTheme": "material-icon-theme",
+  "[typescript]": {
+    "editor.defaultFormatter": "google.g3"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "google.g3"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.userWords": [
+    "Arjan",
+    "cdap",
+    "centigrate",
+    "Gson",
+    "guice",
+    "peekable",
+    "stackframe"
+  ],
+  "git.suggestSmartCommit": false,
+  "python.languageServer": "Pylance",
+  "python.linting.mypyEnabled": true,
+  "python.linting.prospectorEnabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": true,
+  "[python]": {
+    "gitlens.codeLens.symbolScopes": ["!Module"],
+    "editor.wordBasedSuggestions": false
+  },
+  "python.linting.pycodestyleEnabled": true,
+  "python.linting.pycodestyleArgs": ["--ignore=E501"],
+  "python.linting.flake8Args": ["--ignore=E501"],
+  "python.linting.pylamaArgs": ["--ignore=E501"],
+  "python.linting.pylintArgs": ["-d", "C0301"],
+  "python.linting.prospectorArgs": ["--ignore=E501"],
+  "java.completion.guessMethodArguments": true,
+  "java.signatureHelp.enabled": true,
+  "java.signatureHelp.description.enabled": true,
+  "java.saveActions.organizeImports": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.maxConcurrentBuilds": 3,
+  "java.maven.downloadSources": true,
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-1.8",
+      "path": "/usr/local/buildtools/java/jdk8",
+      "default": true
+    }
+  ],
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "psi-header.config": {
+    "license": "CustomUri",
+    "copyrightHolder": "Cask Data, Inc.",
+    "forceToTop": true,
+    "blankLinesAfter": 1
+  },
+  "psi-header.changes-tracking": {
+    "autoHeader": "manualSave",
+    "includeGlob": ["**/cdap/**/*.java"]
+  },
+  "psi-header.license-reference": {
+    "uri": "~/Documents/apache-2-0-license.md",
+    "uriIsLocalFile": true
+  },
+  "psi-header.templates": [
+    {
+      "language": "*",
+      "template": ["<<licensetext>>"]
+    }
+  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSaveMode": "modifications",
+  "editor.formatOnSave": true,
+  "Lua.telemetry.enable": false,
+  "java.completion.importOrder": ["", "java", "javax", "#"],
+  "workbench.colorTheme": "Tokyo Night Pro",
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.new"]
+    }
+  ],
+  "vim.handleKeys": {
+    // Allow vs code to handle tab navigation.
+    "<C-tab>": false,
+    "<C-S-tab>": false
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
