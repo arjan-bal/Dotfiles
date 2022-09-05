@@ -99,9 +99,13 @@
   "vim.handleKeys": {
     // Allow vs code to handle tab navigation.
     "<C-tab>": false,
-    "<C-S-tab>": false
+    "<C-S-tab>": false, 
+    // Allow usual copy and paste.
+    "<C-c>": false,
+    "<C-v>": false
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "editor.lineNumbers": "relative"
 }
