@@ -1,42 +1,51 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
   {
-    "key": "numpad8",
-    "command": "scrollLineUp",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+up",
-    "command": "-scrollLineUp",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "numpad5",
-    "command": "scrollLineDown",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+down",
-    "command": "-scrollLineDown",
-    "when": "textInputFocus"
-  },
-  {
     "key": "alt+left",
     "command": "workbench.action.navigateBack",
-    "when": "canNavigateBack"
-  },
-  {
-    "key": "ctrl+alt+-",
-    "command": "-workbench.action.navigateBack",
     "when": "canNavigateBack"
   },
   // Use EditorInGroup to cycle within tabs in a split.
   {
     "key": "ctrl+tab",
-    "command": "workbench.action.nextEditorInGroup"
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.quickOpenNavigateNextInTerminalPicker",
+    "when": "terminalFocus"
   },
   {
     "key": "ctrl+shift+tab",
     "command": "workbench.action.previousEditorInGroup"
-  }
+  },
+  // Toggle between terminal and editor focus
+  // {
+  //   "key": "alt+h",
+  //   "command": "workbench.action.navigateLeft"
+  // },
+  // {
+  //   "key": "alt+l",
+  //   "command": "workbench.action.navigateRight"
+  // },
+  {
+    "key": "alt+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "alt+j",
+    "command": "workbench.action.navigateDown"
+  },
+  // Create new files and directories in the file tree.
+  {
+    "key": "ctrl+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
+  },
 ]

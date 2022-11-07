@@ -1,12 +1,6 @@
 {
   "C_Cpp.intelliSenseEngine": "Disabled",
   "workbench.iconTheme": "material-icon-theme",
-  "[typescript]": {
-    "editor.defaultFormatter": "google.g3"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "google.g3"
-  },
   "security.workspace.trust.untrustedFiles": "open",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -30,9 +24,7 @@
     "stackframe"
   ],
   "git.suggestSmartCommit": false,
-  "python.languageServer": "Pylance",
   "python.linting.mypyEnabled": true,
-  "python.linting.prospectorEnabled": true,
   "python.linting.pylintEnabled": true,
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": true,
@@ -42,10 +34,7 @@
   },
   "python.linting.pycodestyleEnabled": true,
   "python.linting.pycodestyleArgs": ["--ignore=E501"],
-  "python.linting.flake8Args": ["--ignore=E501"],
-  "python.linting.pylamaArgs": ["--ignore=E501"],
   "python.linting.pylintArgs": ["-d", "C0301"],
-  "python.linting.prospectorArgs": ["--ignore=E501"],
   "java.completion.guessMethodArguments": true,
   "java.signatureHelp.enabled": true,
   "java.signatureHelp.description.enabled": true,
@@ -53,15 +42,8 @@
   "java.referencesCodeLens.enabled": true,
   "java.maxConcurrentBuilds": 3,
   "java.maven.downloadSources": true,
-  "java.configuration.runtimes": [
-    {
-      "name": "JavaSE-1.8",
-      "path": "/usr/local/buildtools/java/jdk8",
-      "default": true
-    }
-  ],
   "[java]": {
-    "editor.defaultFormatter": "redhat.java"
+    "editor.defaultFormatter": "redhat.java",
   },
   "psi-header.config": {
     "license": "CustomUri",
@@ -85,7 +67,7 @@
   ],
   "editor.formatOnPaste": true,
   "editor.formatOnSaveMode": "modifications",
-  "editor.formatOnSave": true,
+  // "editor.formatOnSave": true,
   "Lua.telemetry.enable": false,
   "java.completion.importOrder": ["", "java", "javax", "#"],
   "workbench.colorTheme": "Tokyo Night Pro",
@@ -94,18 +76,59 @@
     {
       "before": ["<leader>", "t"],
       "commands": ["workbench.action.terminal.new"]
+    },
+    // Vim style buffer navigation.
+    {
+      "before": ["L"],
+      "commands": [":bnext"]
+    },
+    {
+      "before": ["H"],
+      "commands": [":bprev"]
+    },
+    // Open file manager, aka project view.
+    {
+      "before": ["<leader>", "p", "v"],
+      "commands": ["workbench.action.files.openFileFolder"]
+    },
+    {
+      "before": ["<leader>", "g", "d"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    // Delete without copying to register.
+    {
+      "before": ["<leader>", "d"],
+      "after": ["\"", "_", "d"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      // Delete without copying to register.
+      "before": ["<leader>", "d"],
+      "after": ["\"", "_", "d"]
     }
   ],
   "vim.handleKeys": {
     // Allow vs code to handle tab navigation.
     "<C-tab>": false,
-    "<C-S-tab>": false, 
+    "<C-S-tab>": false,
     // Allow usual copy and paste.
     "<C-c>": false,
-    "<C-v>": false
+    "<C-v>": false,
+    "<C-x>": false,
+    // vs code new window.
+    "<C-n>": false,
+    // vs code indention.
+    "<C-[>": false,
+    "<C-]>": false,
+    // vs code tab close.
+    "<C-w>": false,
   },
+  "vim.overrideCopy": false,
+  "vim.useSystemClipboard": true,
+  "workbench.sideBar.location": "right",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.lineNumbers": "relative"
+  "editor.lineNumbers": "relative",
 }
