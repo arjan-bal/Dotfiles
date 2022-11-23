@@ -68,12 +68,12 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.floating,
+    -- awful.layout.suit.floating,
     -- awful.layout.suit.tile.left,
-    -- awful.layout.suit.tile.bottom,
+    awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.max,
@@ -364,37 +364,37 @@ clientkeys = gears.table.join(
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+    awful.key({ modkey }, "m", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end ,
-        {description = "minimize", group = "client"}),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized = not c.maximized
-            c:raise()
-        end ,
-        {description = "(un)maximize", group = "client"}),
-    awful.key({ modkey, "Control" }, "m",
-        function (c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
-        end ,
-        {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end ,
-        {description = "(un)maximize horizontally", group = "client"})
+              {description = "toggle keep on top", group = "client"})
+--     awful.key({ modkey,           }, "n",
+--         function (c)
+--             -- The client currently has the input focus, so it cannot be
+--             -- minimized, since minimized clients can't have the focus.
+--             c.minimized = true
+--         end ,
+--         {description = "minimize", group = "client"}),
+--     awful.key({ modkey,           }, "m",
+--         function (c)
+--             c.maximized = not c.maximized
+--             c:raise()
+--         end ,
+--         {description = "(un)maximize", group = "client"}),
+--     awful.key({ modkey, "Control" }, "m",
+--         function (c)
+--             c.maximized_vertical = not c.maximized_vertical
+--             c:raise()
+--         end ,
+--         {description = "(un)maximize vertically", group = "client"}),
+--     awful.key({ modkey, "Shift"   }, "m",
+--         function (c)
+--             c.maximized_horizontal = not c.maximized_horizontal
+--             c:raise()
+--         end ,
+--         {description = "(un)maximize horizontally", group = "client"})
 )
 
 -- Bind all key numbers to tags.
