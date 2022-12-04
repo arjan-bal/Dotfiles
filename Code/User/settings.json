@@ -99,14 +99,33 @@
     {
       "before": ["<leader>", "d"],
       "after": ["\"", "_", "d"]
-    }
+    },
+    // Center cursor after moving up/down.
+    {
+      "before": ["<C-d>"],
+      "after": ["<C-d>", "z", "z"]
+    },
+    {
+      "before": ["<C-u>"],
+      "after": ["<C-u>", "z", "z"]
+    },
+    // Center search results.
+    // This handles "folds".
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z", "z", "v"]
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z", "z", "v"]
+    },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       // Delete without copying to register.
       "before": ["<leader>", "d"],
       "after": ["\"", "_", "d"]
-    }
+    },
   ],
   "vim.handleKeys": {
     // Allow vs code to handle tab navigation.
