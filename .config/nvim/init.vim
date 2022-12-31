@@ -37,37 +37,5 @@ Plug 'rcarriga/nvim-dap-ui'
 
 call plug#end()
 
-let mapleader = " "
-" set clipboard+=unnamedplus
-
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>+ :vertical resize +5<CR>
-nnoremap <Leader>- :vertical resize -5<CR>
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-" Cycle between buffers.
-nnoremap L :bn<CR>
-nnoremap H :bp<CR>
-" Create a new blank file in a new buffer.
-nnoremap <C-n> :enew<CR>
-" Close a buffer.
-nnoremap <leader>q :bdelete<CR>
-
-" delete without copying to register
-nnoremap <leader>d "_d
-xnoremap <leader>d "_d
-" paste without popping from register
-xnoremap <leader>p "_dP
-" copy to OS's copy register
-vnoremap <leader>y "+y
-" find and replace selected text
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-" go back to normal mode in termial using escape
-tnoremap <Esc> <C-\><C-n>
-
-augroup ARJAN
-    autocmd!
-    autocmd BufWritePre * %s/\s\+$//e
-augroup END
-
+source ~/.vimrc
 lua require("config")
