@@ -313,7 +313,7 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    awful.key({ modkey,           }, "z", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
@@ -334,16 +334,16 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.util.spawn('dmenu_run') end,
               {description = "run dmenu", group = "launcher"}),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
+--    awful.key({ modkey }, "x",
+--              function ()
+--                  awful.prompt.run {
+--                    prompt       = "Run Lua code: ",
+--                    textbox      = awful.screen.focused().mypromptbox.widget,
+--                    exe_callback = awful.util.eval,
+--                    history_path = awful.util.get_cache_dir() .. "/history_eval"
+--                  }
+--              end,
+--              {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
@@ -369,7 +369,7 @@ clientkeys = gears.table.join(
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"})
+              {description = "toggle keep on top", group = "client"}),
 --     awful.key({ modkey,           }, "n",
 --         function (c)
 --             -- The client currently has the input focus, so it cannot be
@@ -377,12 +377,12 @@ clientkeys = gears.table.join(
 --             c.minimized = true
 --         end ,
 --         {description = "minimize", group = "client"}),
---     awful.key({ modkey,           }, "m",
---         function (c)
---             c.maximized = not c.maximized
---             c:raise()
---         end ,
---         {description = "(un)maximize", group = "client"}),
+     awful.key({ modkey,           }, "x",
+         function (c)
+             c.maximized = not c.maximized
+             c:raise()
+         end ,
+         {description = "(un)maximize", group = "client"})
 --     awful.key({ modkey, "Control" }, "m",
 --         function (c)
 --             c.maximized_vertical = not c.maximized_vertical
