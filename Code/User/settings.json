@@ -1,5 +1,7 @@
 {
   "C_Cpp.intelliSenseEngine": "Disabled",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
   "workbench.iconTheme": "material-icon-theme",
   "security.workspace.trust.untrustedFiles": "open",
   "editor.suggestSelection": "first",
@@ -18,8 +20,11 @@
     "Arjan",
     "cdap",
     "centigrate",
+    "Deque",
     "Gson",
     "guice",
+    "neighbour",
+    "neighbours",
     "peekable",
     "stackframe"
   ],
@@ -43,7 +48,7 @@
   "java.maxConcurrentBuilds": 3,
   "java.maven.downloadSources": true,
   "[java]": {
-    "editor.defaultFormatter": "redhat.java",
+    "editor.defaultFormatter": "redhat.java"
   },
   "psi-header.config": {
     "license": "CustomUri",
@@ -70,7 +75,6 @@
   // "editor.formatOnSave": true,
   "Lua.telemetry.enable": false,
   "java.completion.importOrder": ["", "java", "javax", "#"],
-  "workbench.colorTheme": "Tokyo Night Pro",
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -118,14 +122,14 @@
     {
       "before": ["N"],
       "after": ["N", "z", "z", "z", "v"]
-    },
+    }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       // Delete without copying to register.
       "before": ["<leader>", "d"],
       "after": ["\"", "_", "d"]
-    },
+    }
   ],
   "vim.handleKeys": {
     // Allow vs code to handle tab navigation.
@@ -141,7 +145,7 @@
     "<C-[>": false,
     "<C-]>": false,
     // vs code tab close.
-    "<C-w>": false,
+    "<C-w>": false
   },
   "vim.overrideCopy": false,
   "vim.useSystemClipboard": true,
@@ -150,4 +154,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.lineNumbers": "relative",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "files.trimTrailingWhitespace": true
 }
