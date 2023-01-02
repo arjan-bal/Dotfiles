@@ -25,4 +25,11 @@ xnoremap <leader>p "_dP
 " copy to OS's copy register
 vnoremap <leader>y "+y
 
+" Center the cursor after moving up/down.
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+" Center search results.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 source ~/sets.vim
