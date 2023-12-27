@@ -26,20 +26,7 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = home .. '/.cache/jdtls/' .. project_name
 --                                               ^^
 --                                               string concattenation in Lua
-JAVA_DAP_ACTIVE = true
 local bundles = {}
-if JAVA_DAP_ACTIVE then
-    vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/Development/nvim-java/vscode-java-test/server/*.jar"), "\n"))
-    vim.list_extend(
-        bundles,
-        vim.split(
-            vim.fn.glob(
-                home .. "/Development/nvim-java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
-            ),
-            "\n"
-        )
-    )
-end
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -63,14 +50,14 @@ local config = {
 
         -- 💀
         -- use the language server setup by vscode :b
-        '-jar', home .. "/.vscode/extensions/redhat.java-1.9.0-linux-x64/server/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+        '-jar', home .. "/.vim/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
         -- Must point to the                                                     Change this to
         -- eclipse.jdt.ls installation                                           the actual version
 
 
         -- 💀
-        '-configuration', home .. "/.vscode/extensions/redhat.java-1.9.0-linux-x64/server/config_linux",
+        '-configuration', home .. "/.vim/jdtls/config_linux",
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
         -- Must point to the                      Change to one of `linux`, `win` or `mac`
         -- eclipse.jdt.ls installation            Depending on your system.
@@ -97,6 +84,15 @@ local config = {
             },
             configuration = {
                 updateBuildConfiguration = "interactive",
+                 -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+                -- And search for `interface RuntimeOption`
+                -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
+                runtimes = {
+                  {
+                    name = "JavaSE-1.8",
+                    path = "/usr/local/google/home/arjansbal/.sdkman/candidates/java/8.0.322-tem/",
+                  },
+                }
             },
             maven = {
                 downloadSources = true,
