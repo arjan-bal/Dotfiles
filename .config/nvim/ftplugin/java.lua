@@ -77,19 +77,25 @@ local config = {
     on_attach = require("lsp.handlers").on_attach,
     settings = {
         java = {
+            format = {
+                settings = {
+                    --This is converted using IntelliJ. Source is checkstyle.xml in cdap repo.
+                    url = home .. "/Development/GoogleStyle.xml",
+                },
+            },
             eclipse = {
                 downloadSources = true,
             },
             configuration = {
                 updateBuildConfiguration = "interactive",
-                 -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+                -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
                 -- And search for `interface RuntimeOption`
                 -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
                 runtimes = {
-                  {
-                    name = "JavaSE-1.8",
-                    path = "/usr/local/google/home/arjansbal/.sdkman/candidates/java/8.0.322-tem/",
-                  },
+                    {
+                        name = "JavaSE-1.8",
+                        path = "/usr/local/google/home/arjansbal/.sdkman/candidates/java/8.0.322-tem/",
+                    },
                 }
             },
             maven = {
