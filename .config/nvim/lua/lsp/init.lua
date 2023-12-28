@@ -25,7 +25,7 @@ M.server_capabilities = function()
 end
 
 require("lsp.handlers").setup()
-require("lsp.lsp-installer")
 require("lsp.lspconfig")
+require("lsp.mason")
 
 return M

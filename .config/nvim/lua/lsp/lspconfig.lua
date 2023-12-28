@@ -10,8 +10,7 @@ local opts = {
 }
 
 -- Config for each language server.
-
-local sumneko_opts = {
+local lua_ls_opts = {
     settings = {
         Lua = {
             diagnostics = {
@@ -28,6 +27,5 @@ local sumneko_opts = {
 }
 
 require('lspconfig')['pyright'].setup(opts)
-require('lspconfig')['tsserver'].setup(opts)
 require('lspconfig')['rust_analyzer'].setup(opts)
-require('lspconfig')['sumneko_lua'].setup(vim.tbl_deep_extend("force", sumneko_opts, opts))
+require('lspconfig')['lua_ls'].setup(vim.tbl_deep_extend("force", lua_ls_opts, opts))

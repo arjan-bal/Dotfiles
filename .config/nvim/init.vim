@@ -20,7 +20,6 @@ Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'jiangmiao/auto-pairs'
 Plug 'onsails/lspkind.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mfussenegger/nvim-jdtls'
@@ -30,6 +29,7 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'williamboman/mason.nvim'
 
 call plug#end()
 
