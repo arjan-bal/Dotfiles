@@ -3,14 +3,12 @@ vim.opt_local.cmdheight = 2 -- more space in the neovim command line for display
 vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
     return
 end
 
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+cmp_nvim_lsp.default_capabilities()
 
 local status, jdtls = pcall(require, "jdtls")
 if not status then
