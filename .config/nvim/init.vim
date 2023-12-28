@@ -4,6 +4,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -26,6 +27,7 @@ Plug 'navarasu/onedark.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'williamboman/mason.nvim'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
