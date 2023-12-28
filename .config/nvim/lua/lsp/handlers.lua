@@ -2,15 +2,15 @@ local M = {}
 
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
-  return
+    return
 end
 
-M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+M.capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-M.setup = function ()
+M.setup = function()
     -- Symbols taken from VS code codicons.
     local signs = {
         { name = "DiagnosticSignError", text = "" },
@@ -93,7 +93,7 @@ local function lsp_keymaps(bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
     vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
 end
 
 -- Use an on_attach function to only map the following keys
@@ -109,34 +109,34 @@ M.on_attach = function(client, bufnr)
 end
 
 function M.enable_format_on_save()
-  vim.cmd [[
+    vim.cmd [[
     augroup format_on_save
       autocmd!
       autocmd BufWritePre * lua vim.lsp.buf.format({ async = true })
     augroup end
   ]]
-  vim.notify "Enabled format on save"
+    vim.notify "Enabled format on save"
 end
 
 function M.disable_format_on_save()
-  M.remove_augroup "format_on_save"
-  vim.notify "Disabled format on save"
+    M.remove_augroup "format_on_save"
+    vim.notify "Disabled format on save"
 end
 
 function M.toggle_format_on_save()
-  if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
-    M.enable_format_on_save()
-  else
-    M.disable_format_on_save()
-  end
+    if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
+        M.enable_format_on_save()
+    else
+        M.disable_format_on_save()
+    end
 end
 
 function M.remove_augroup(name)
-  if vim.fn.exists("#" .. name) == 1 then
-    vim.cmd("au! " .. name)
-  end
+    if vim.fn.exists("#" .. name) == 1 then
+        vim.cmd("au! " .. name)
+    end
 end
 
-vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]]
+vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("lsp.handlers").toggle_format_on_save()' ]]
 
 return M
