@@ -31,9 +31,8 @@ local config = {
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     cmd = {
-
         -- 💀
-        '/google/data/ro/projects/java-platform/linux-amd64/jdk-17-latest/bin/java', -- or '/path/to/java17_or_newer/bin/java'
+        home .. "/.sdkman/candidates/java/17.0.9-tem/bin/java",     -- or '/path/to/java17_or_newer/bin/java'
         -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -94,7 +93,7 @@ local config = {
                 runtimes = {
                     {
                         name = "JavaSE-1.8",
-                        path = "/usr/local/google/home/arjansbal/.sdkman/candidates/java/8.0.322-tem/",
+                        path = home .. "/.sdkman/candidates/java/8.0.322-tem/",
                     },
                 }
             },
