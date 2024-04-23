@@ -2,7 +2,8 @@ set relativenumber
 
 
 let mapleader = " "
-" set clipboard+=unnamedplus
+set clipboard+=unnamedplus
+set spell
 
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
@@ -19,9 +20,18 @@ nnoremap <leader>q :bdelete<CR>
 
 " delete without copying to register
 nnoremap <leader>d "_d
+" select all.
+nnoremap <C-a> ggVG
 xnoremap <leader>d "_d
 " paste without popping from register
-xnoremap <leader>p "_dP
+xnoremap p "_dp
+xnoremap P "_dP
+" change without copying to register
+xnoremap c "_c
+" change without copying to register
+xnoremap s "_s
+" delete without copying to register
+xnoremap x "_x
 " copy to OS's copy register
 vnoremap <leader>y "+y
 
@@ -31,5 +41,25 @@ nnoremap <C-u> <C-u>zz
 " Center search results.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+" Use escape to exit terminal insert mode. Note that the current terminal emulator
+" should ignore the escape key to prevent 
+tnoremap jj <C-\><C-n>
+
+
+" Overwrite the default behaviour of replacing default register when parsing
+" on top of text.
+" Source: https://stackoverflow.com/a/290723/15196379
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+
+function! s:Repl()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+endfunction
+
+" NB: this supports "rp that replaces the selection by the contents of @r
+vnoremap <silent> <expr> p <sid>Repl()
 
 source ~/sets.vim

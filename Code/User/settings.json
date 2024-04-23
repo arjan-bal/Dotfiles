@@ -1,8 +1,7 @@
 {
-  "C_Cpp.intelliSenseEngine": "Disabled",
+  "C_Cpp.intelliSenseEngine": "disabled",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "workbench.iconTheme": "material-icon-theme",
   "security.workspace.trust.untrustedFiles": "open",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -12,9 +11,11 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "diffEditor.ignoreTrimWhitespace": false,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[rust]": {
+    "editor.tabSize": 4
   },
   "cSpell.userWords": [
     "Arjan",
@@ -23,10 +24,13 @@
     "Deque",
     "Gson",
     "guice",
+    "Manacher's",
+    "manachers",
     "neighbour",
     "neighbours",
     "peekable",
-    "stackframe"
+    "stackframe",
+    "tolerations"
   ],
   "git.suggestSmartCommit": false,
   "python.linting.mypyEnabled": true,
@@ -35,7 +39,8 @@
   "python.testing.unittestEnabled": true,
   "[python]": {
     "gitlens.codeLens.symbolScopes": ["!Module"],
-    "editor.wordBasedSuggestions": false
+    "editor.wordBasedSuggestions": "off",
+    "editor.formatOnType": true
   },
   "python.linting.pycodestyleEnabled": true,
   "python.linting.pycodestyleArgs": ["--ignore=E501"],
@@ -50,31 +55,10 @@
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
-  "psi-header.config": {
-    "license": "CustomUri",
-    "copyrightHolder": "Cask Data, Inc.",
-    "forceToTop": true,
-    "blankLinesAfter": 1
-  },
-  "psi-header.changes-tracking": {
-    "autoHeader": "manualSave",
-    "includeGlob": ["**/cdap/**/*.java"]
-  },
-  "psi-header.license-reference": {
-    "uri": "~/Documents/apache-2-0-license.md",
-    "uriIsLocalFile": true
-  },
-  "psi-header.templates": [
-    {
-      "language": "*",
-      "template": ["<<licensetext>>"]
-    }
-  ],
   "editor.formatOnPaste": true,
   "editor.formatOnSaveMode": "modifications",
   // "editor.formatOnSave": true,
   "Lua.telemetry.enable": false,
-  "java.completion.importOrder": ["", "java", "javax", "#"],
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -99,10 +83,22 @@
       "before": ["<leader>", "g", "d"],
       "commands": ["editor.action.goToImplementation"]
     },
-    // Delete without copying to register.
+    // Handle default register overwrite behaviour.
     {
       "before": ["<leader>", "d"],
       "after": ["\"", "_", "d"]
+    },
+    {
+      "before": ["c"],
+      "after": ["\"", "_", "c"]
+    },
+    {
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    },
+    {
+      "before": ["s"],
+      "after": ["\"", "_", "s"]
     },
     // Center cursor after moving up/down.
     {
@@ -122,6 +118,20 @@
     {
       "before": ["N"],
       "after": ["N", "z", "z", "z", "v"]
+    },
+    // Select all.
+    {
+      "before": ["<C-a>"],
+      "after": ["g", "g", "V", "G"]
+    },
+    // go to problems panel.
+    {
+      "before": ["/"],
+      "commands": ["actions.find"]
+    },
+    {
+      "before": ["<leader>", "g", "p"],
+      "commands": ["workbench.actions.view.problems"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -129,6 +139,20 @@
       // Delete without copying to register.
       "before": ["<leader>", "d"],
       "after": ["\"", "_", "d"]
+    },
+    // Always change without copying to register.
+    {
+      "before": ["c"],
+      "after": ["\"", "_", "c"]
+    },
+    // Always remove char without copying to register.
+    {
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    },
+    {
+      "before": ["s"],
+      "after": ["\"", "_", "s"]
     }
   ],
   "vim.handleKeys": {
@@ -145,7 +169,9 @@
     "<C-[>": false,
     "<C-]>": false,
     // vs code tab close.
-    "<C-w>": false
+    "<C-w>": false,
+    "<C-f>": false,
+    "<C-p>": false
   },
   "vim.overrideCopy": false,
   "vim.useSystemClipboard": true,
@@ -155,5 +181,23 @@
   },
   "editor.lineNumbers": "relative",
   "terminal.integrated.enableMultiLinePasteWarning": false,
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+  "editor.detectIndentation": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "go.inferGopath": true,
+  "editor.fontLigatures": true,
+  "workbench.colorTheme": "Atom One Dark",
+  "workbench.iconTheme": "vscode-icons",
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "diffEditor.ignoreTrimWhitespace": false
+  },
+  "nxConsole.showNodeVersionOnStartup": false
 }

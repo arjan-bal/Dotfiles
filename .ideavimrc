@@ -1,1 +1,8 @@
 source ~/.vimrc
+
+nnoremap <leader><leader><CR> :source ~/.ideavimrc<CR>
+
+map gd <Action>(GotoDeclaration)
+map gr <Action>(FindUsages)
+map <leader>gb<Action>(Annotate)
+

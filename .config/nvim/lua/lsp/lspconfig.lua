@@ -29,3 +29,4 @@ local lua_ls_opts = {
 require('lspconfig')['pyright'].setup(opts)
 require('lspconfig')['rust_analyzer'].setup(opts)
 require('lspconfig')['lua_ls'].setup(vim.tbl_deep_extend("force", lua_ls_opts, opts))
+require('lspconfig')['gopls'].setup(opts)
