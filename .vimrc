@@ -1,9 +1,36 @@
-set relativenumber
-
-
 let mapleader = " "
+
+set relativenumber
 set clipboard+=unnamedplus
 set spell
+set spelloptions=camel
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set exrc
+set relativenumber
+set smartindent
+set nu
+set nohlsearch
+set hidden
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set scrolloff=8
+set signcolumn=yes
+set colorcolumn=80
+set list listchars=tab:>\ ,trail:-,eol:↵
+
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
+
 
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
@@ -46,7 +73,7 @@ nnoremap N Nzzzv
 tnoremap jj <C-\><C-n>
 
 
-" Overwrite the default behaviour of replacing default register when parsing
+" Overwrite the default behaviour of replacing default register when pasting
 " on top of text.
 " Source: https://stackoverflow.com/a/290723/15196379
 function! RestoreRegister()
@@ -62,4 +89,3 @@ endfunction
 " NB: this supports "rp that replaces the selection by the contents of @r
 vnoremap <silent> <expr> p <sid>Repl()
 
-source ~/sets.vim
