@@ -26,6 +26,15 @@ local lua_ls_opts = {
     },
 }
 
+-- Default config for all LSPs.
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        require("lsp.handlers").on_attach(client, bufnr)
+    end,
+})
+
 require('lspconfig')['pyright'].setup(opts)
 require('lspconfig')['rust_analyzer'].setup(opts)
 require('lspconfig')['lua_ls'].setup(vim.tbl_deep_extend("force", lua_ls_opts, opts))
