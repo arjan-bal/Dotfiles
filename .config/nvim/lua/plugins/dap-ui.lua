@@ -1,18 +1,18 @@
 return {
     'rcarriga/nvim-dap-ui',
     lazy = true,
-    dependencies = { 
+    dependencies = {
         'mfussenegger/nvim-dap',
         'nvim-neotest/nvim-nio',
     },
     keys = {
         -- Keymap to toggle DAP UI with reset
         {
-            '<leader>du', 
-            function() 
+            '<leader>du',
+            function()
                 local dapui = require("dapui")
-                dapui.toggle({ reset = true }) 
-            end, 
+                dapui.toggle({ reset = true })
+            end,
             desc = 'Toggle DAP UI (with reset)'
         },
     },
@@ -20,4 +20,3 @@ return {
         require("dapui").setup()
     end,
 }
-

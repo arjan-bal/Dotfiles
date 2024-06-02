@@ -25,7 +25,7 @@ return {
 
         -- GoTest starts launches tests that match the pattern in debugging mode.
         function GoTest(test_name)
-            dap.run({
+            require("dap").run({
                 type = "go",
                 name = test_name,
                 request = "launch",

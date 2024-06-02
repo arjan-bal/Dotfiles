@@ -14,6 +14,5 @@ vim.opt.rtp:prepend(lazypath)
 -- Source vimrc if it exists
 vim.cmd('source ~/.vimrc')
 
-require('config')
 require("lazy").setup("plugins")
-
+require('config')

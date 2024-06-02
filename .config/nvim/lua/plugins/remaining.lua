@@ -53,6 +53,6 @@ return {
             'mfussenegger/nvim-dap',
             'nvim-treesitter/nvim-treesitter',
         },
-        lazy = true,  
+        lazy = true,
     },
 }

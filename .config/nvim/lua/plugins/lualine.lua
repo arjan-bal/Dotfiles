@@ -38,12 +38,12 @@ return {
                     diagnostics_color = {
                         -- Same values as the general color option can be used here.
                         error = 'DiagnosticError', -- Changes diagnostics' error color.
-                        warn  = 'DiagnosticWarn', -- Changes diagnostics' warn color.
-                        info  = 'DiagnosticInfo', -- Changes diagnostics' info color.
-                        hint  = 'DiagnosticHint', -- Changes diagnostics' hint color.
+                        warn  = 'DiagnosticWarn',  -- Changes diagnostics' warn color.
+                        info  = 'DiagnosticInfo',  -- Changes diagnostics' info color.
+                        hint  = 'DiagnosticHint',  -- Changes diagnostics' hint color.
                     },
                     symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-                    colored = true,     -- Displays diagnostics status in color if set to true.
+                    colored = true,         -- Displays diagnostics status in color if set to true.
                     always_visible = false, -- Show diagnostics even if there are none.
                 }
                 },
