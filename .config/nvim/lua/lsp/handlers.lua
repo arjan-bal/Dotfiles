@@ -4,7 +4,7 @@ M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-M.setup = function ()
+M.setup = function()
     -- Symbols taken from VS code codicons.
     local signs = {
         { name = "DiagnosticSignError", text = "" },
@@ -102,35 +102,46 @@ M.on_attach = function(client, bufnr)
     lsp_highlight_document(client, bufnr)
 end
 
-function M.enable_format_on_save()
-  vim.cmd [[
-    augroup format_on_save
-      autocmd!
-      autocmd BufWritePre * lua vim.lsp.buf.format({ async = true })
-    augroup end
-  ]]
-  vim.notify "Enabled format on save"
+local format_group_name = "FormatOnSave"
+local format_group = vim.api.nvim_create_augroup(format_group_name, { clear = true })
+
+local function enable_format_on_save()
+    vim.api.nvim_create_autocmd('BufWritePre', {
+        group = format_group,
+        callback = function()
+            vim.lsp.buf.format({})
+        end,
+        vim.notify "Enabled format on save"
+    })
 end
 
-function M.disable_format_on_save()
-  M.remove_augroup "format_on_save"
-  vim.notify "Disabled format on save"
+-- Enable auto format by default.
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client.supports_method('textDocument/formatting') then
+            enable_format_on_save()
+        end
+    end,
+})
+
+local function toggle_format_on_save()
+    local autocommands = vim.api.nvim_get_autocmds({
+        group = format_group_name,
+    })
+
+    if next(autocommands) == nil then
+        enable_format_on_save()
+    else
+        vim.api.nvim_clear_autocmds({
+            group = format_group_name
+        })
+        vim.notify "Disabled format on save"
+    end
 end
 
-function M.toggle_format_on_save()
-  if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
-    M.enable_format_on_save()
-  else
-    M.disable_format_on_save()
-  end
-end
-
-function M.remove_augroup(name)
-  if vim.fn.exists("#" .. name) == 1 then
-    vim.cmd("au! " .. name)
-  end
-end
-
-vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]]
+vim.api.nvim_create_user_command('LspToggleAutoFormat', function()
+    toggle_format_on_save()
+end, {})
 
 return M
