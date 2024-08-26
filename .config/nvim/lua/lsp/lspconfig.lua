@@ -29,7 +29,6 @@ local lua_ls_opts = {
 
 local gopls_opts = {
     on_attach = function(client, bufnr)
-        handlers.enable_format_on_save()
         handlers.on_attach(client, bufnr)
     end,
 }

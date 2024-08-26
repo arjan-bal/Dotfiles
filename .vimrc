@@ -32,7 +32,6 @@ set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
 
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 vnoremap J :m '>+1<CR>gv=gv
