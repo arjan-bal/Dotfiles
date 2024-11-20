@@ -21,6 +21,8 @@ set scrolloff=8
 set signcolumn=yes
 set colorcolumn=80
 set list listchars=tab:>\ ,trail:-,eol:↵
+" Attempt to resolve errors with some nvim-cmp + LSP interactions.
+set maxmempattern=5000
 
 " Ignore files
 set wildignore+=*.pyc

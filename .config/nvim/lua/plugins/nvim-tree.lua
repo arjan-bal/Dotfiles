@@ -1,5 +1,6 @@
 return {
     'kyazdani42/nvim-tree.lua',
+    version = "1.5.0", -- Pinned to avoid tree theme from bleeding into other buffers.
     lazy = false,
     config = function()
         local nvim_tree = require('nvim-tree')
@@ -13,10 +14,8 @@ return {
         vim.g.loaded_netrwPlugin = 1
 
 
-        nvim_tree.setup {
-            open_on_tab = false,
-            hijack_cursor = false,
-            update_cwd = true,
+        nvim_tree.setup({
+            update_cwd = false,
             diagnostics = {
                 enable = true,
                 icons = {
@@ -28,7 +27,6 @@ return {
             },
             update_focused_file = {
                 enable = true,
-                update_cwd = true,
                 ignore_list = {},
             },
             git = {
@@ -54,7 +52,7 @@ return {
                 number = false,
                 relativenumber = true,
             },
-        }
+        })
 
         vim.api.nvim_set_keymap('n', '<leader>pv', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
     end
