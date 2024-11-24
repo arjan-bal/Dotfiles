@@ -1,13 +1,12 @@
 let mapleader = " "
 
-set relativenumber
 set clipboard+=unnamedplus
 set spell
 set spelloptions=camel
 set tabstop=4 softtabstop=4
+set textwidth=80
 set shiftwidth=4
 set expandtab
-set exrc
 set relativenumber
 set smartindent
 set nu

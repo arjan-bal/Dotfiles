@@ -1,18 +1,15 @@
 return {
     'kyazdani42/nvim-tree.lua',
-    version = "1.5.0", -- Pinned to avoid tree theme from bleeding into other buffers.
     lazy = false,
     config = function()
-        local nvim_tree = require('nvim-tree')
-        -- following options are the default
-        -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-
-
         -- local tree_cb = nvim_tree_config.nvim_tree_callback
         -- disable netrw at the very start of your init.lua
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
 
+        local nvim_tree = require('nvim-tree')
+        -- following options are the default
+        -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 
         nvim_tree.setup({
             update_cwd = false,
@@ -49,7 +46,7 @@ return {
                 --        { key = "n", cb = tree_cb "create" },
                 --      },
                 --    },
-                number = false,
+                number = true,
                 relativenumber = true,
             },
         })
