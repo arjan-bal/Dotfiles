@@ -33,6 +33,16 @@ local gopls_opts = {
     end,
 }
 
+local rust_analyzer_opts = {
+    settings = {
+        ["rust_analyzer"] = {
+            cargo = {
+                allFeatures = true,
+            },
+        },
+    },
+}
+
 -- Default config for all LSPs.
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
@@ -43,6 +53,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 require('lspconfig')['pyright'].setup(opts)
-require('lspconfig')['rust_analyzer'].setup(opts)
+require('lspconfig')['rust_analyzer'].setup(vim.tbl_deep_extend("force", opts, rust_analyzer_opts))
 require('lspconfig')['lua_ls'].setup(vim.tbl_deep_extend("force", lua_ls_opts, opts))
 require('lspconfig')['gopls'].setup(vim.tbl_deep_extend("force", opts, gopls_opts))
