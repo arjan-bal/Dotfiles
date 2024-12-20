@@ -34,8 +34,11 @@ return {
                 args = {
                     "-test.v",
                     "-test.run", test_name,
-                    "-test.count=1"
-                }
+                    "-test.count", "1",
+                },
+                env = {
+                    GOFLAGS = "-vet=off",
+                },
             })
         end
 
