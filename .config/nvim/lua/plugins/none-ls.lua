@@ -11,7 +11,6 @@ return {
                 null_ls.builtins.formatting.black,
                 null_ls.builtins.formatting.buf,
                 null_ls.builtins.diagnostics.buf,
-                null_ls.builtins.diagnostics.golangci_lint,
                 null_ls.builtins.diagnostics.revive,
             }
         })
