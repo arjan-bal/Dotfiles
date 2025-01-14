@@ -36,11 +36,52 @@ local gopls_opts = {
 local rust_analyzer_opts = {
     settings = {
         ["rust_analyzer"] = {
+            diagnostics = {
+                styleLints = {
+                    enable = true,
+                },
+            },
             cargo = {
                 allFeatures = true,
             },
+            check = {
+                command = "clippy",
+            }
         },
     },
+    commands = {
+        ExpandMacro = {
+            function()
+                vim.lsp.buf_request_all(
+                    0,
+                    "rust-analyzer/expandMacro",
+                    vim.lsp.util.make_position_params(),
+                    function(responses)
+                        if #responses == 0 then
+                            vim.notify("No macro expansion available", vim.log.levels.WARN)
+                            return
+                        end
+                        -- Create a floating window to display the content
+                        local content = responses[1].result.expansion
+                        local buf = vim.api.nvim_create_buf(false, true)
+                        vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(content, "\n"))
+
+                        local width = math.min(80, vim.o.columns - 4)
+                        local height = math.min(20, vim.o.lines - 4)
+                        local winOpts = {
+                            relative = "cursor",
+                            width = width,
+                            height = height,
+                            row = 1,
+                            col = 1,
+                            style = "minimal",
+                            border = "rounded",
+                        }
+                        vim.api.nvim_open_win(buf, true, winOpts)
+                    end)
+            end
+        }
+    }
 }
 
 -- Default config for all LSPs.
