@@ -22,6 +22,5 @@ end
 
 require("lsp.handlers").setup()
 require("lsp.lspconfig")
-require("lsp.mason")
 
 return M

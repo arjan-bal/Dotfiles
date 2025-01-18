@@ -1,9 +1,15 @@
+local M = {}
+local ok, _ = pcall(require, "telescope")
+if not ok then
+  M.setup = function ()
+  end
+  return M
+end
+
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
 local make_entry = require "telescope.make_entry"
 local conf = require "telescope.config".values
-
-local M = {}
 
 local live_multigrep = function(opts)
     opts = opts or {}

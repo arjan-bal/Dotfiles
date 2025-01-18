@@ -1,3 +1,8 @@
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+  return
+end
+
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
@@ -93,7 +98,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-require('lspconfig')['pyright'].setup(opts)
-require('lspconfig')['rust_analyzer'].setup(vim.tbl_deep_extend("force", opts, rust_analyzer_opts))
-require('lspconfig')['lua_ls'].setup(vim.tbl_deep_extend("force", lua_ls_opts, opts))
-require('lspconfig')['gopls'].setup(vim.tbl_deep_extend("force", opts, gopls_opts))
+lspconfig['pyright'].setup(opts)
+lspconfig['rust_analyzer'].setup(vim.tbl_deep_extend("force", opts, rust_analyzer_opts))
+lspconfig['lua_ls'].setup(vim.tbl_deep_extend("force", lua_ls_opts, opts))
+lspconfig['gopls'].setup(vim.tbl_deep_extend("force", opts, gopls_opts))

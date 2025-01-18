@@ -1,5 +1,12 @@
 local M = {}
-M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not ok then
+  M.setup = function ()
+  end
+  return M
+end
+
+M.capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
