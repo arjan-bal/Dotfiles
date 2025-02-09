@@ -69,7 +69,7 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 " Jump to previous buffer.
-nnoremap <leader>p :b#<CR>
+nnoremap <leader>pb :b#<CR>
 " Use escape to exit terminal insert mode. Note that the current terminal emulator
 " should ignore the escape key to prevent 
 tnoremap jj <C-\><C-n>
