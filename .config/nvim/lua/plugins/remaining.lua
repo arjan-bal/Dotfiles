@@ -26,6 +26,7 @@ return {
     {
         'neovim/nvim-lspconfig',
         lazy = false,
+        version = "v1.8.0",
     },
     {
         'kyazdani42/nvim-web-devicons',
@@ -40,8 +41,9 @@ return {
         lazy = false,
     },
     {
-        'williamboman/mason.nvim',
+        'mason-org/mason.nvim',
         lazy = false,
+        opts = {},
     },
     {
         'tpope/vim-fugitive',
