@@ -1,6 +1,6 @@
 local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then
-  return
+    return
 end
 
 local lsp_flags = {
@@ -30,12 +30,6 @@ local lua_ls_opts = {
             },
         },
     },
-}
-
-local gopls_opts = {
-    on_attach = function(client, bufnr)
-        handlers.on_attach(client, bufnr)
-    end,
 }
 
 local rust_analyzer_opts = {
@@ -89,6 +83,10 @@ local rust_analyzer_opts = {
     }
 }
 
+local clangd_opts = {
+    cmd = { "clangd", "--compile-commands-dir=." },
+}
+
 -- Default config for all LSPs.
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
@@ -101,4 +99,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 lspconfig['pyright'].setup(opts)
 lspconfig['rust_analyzer'].setup(vim.tbl_deep_extend("force", opts, rust_analyzer_opts))
 lspconfig['lua_ls'].setup(vim.tbl_deep_extend("force", lua_ls_opts, opts))
-lspconfig['gopls'].setup(vim.tbl_deep_extend("force", opts, gopls_opts))
+lspconfig['gopls'].setup(opts)
+lspconfig['clangd'].setup(vim.tbl_deep_extend("force", opts, clangd_opts))
