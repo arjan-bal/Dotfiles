@@ -38,10 +38,6 @@ return {
         lazy = false,
     },
     {
-        'mfussenegger/nvim-jdtls',
-        ft = 'java',
-    },
-    {
         'navarasu/onedark.nvim',
         lazy = false,
     },
