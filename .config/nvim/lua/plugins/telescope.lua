@@ -1,7 +1,7 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
+        branch = 'master',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-fzf-native.nvim'
@@ -14,7 +14,7 @@ return {
             { '<leader>fc', function() require('telescope.builtin').commands() end,                  desc = 'Commands' },
             { '<leader>fz', function() require('telescope.builtin').current_buffer_fuzzy_find() end, desc = 'Fuzzy Find in Buffer' },
             { '<leader>fr', function() require('telescope.builtin').git_branches() end,              desc = 'Git Branch' },
-            { '<leader>fm', function() require('telescope.builtin').marks() end,              desc = 'Marks' },
+            { '<leader>fm', function() require('telescope.builtin').marks() end,                     desc = 'Marks' },
         },
         config = function()
             local telescope = require('telescope')

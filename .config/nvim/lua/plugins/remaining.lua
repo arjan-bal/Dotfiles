@@ -13,6 +13,11 @@ return {
     },
     {
         'hrsh7th/cmp-nvim-lsp',
+        -- Workaround commit that mistakenly a introduced breaking change.
+        -- Buggy PR: https://github.com/hrsh7th/cmp-nvim-lsp/pull/81
+        -- Tracking issue: https://github.com/hrsh7th/cmp-nvim-lsp/issues/85
+        branch = 'main',
+        commit = 'a8912b88ce488f411177fc8aed358b04dc246d7b',
         lazy = false,
     },
     {
