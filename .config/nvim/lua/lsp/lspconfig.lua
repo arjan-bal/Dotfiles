@@ -85,6 +85,7 @@ local rust_analyzer_opts = {
 
 local clangd_opts = {
     cmd = { "clangd", "--compile-commands-dir=." },
+    root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".git"),
 }
 
 -- Default config for all LSPs.
@@ -101,3 +102,5 @@ lspconfig['rust_analyzer'].setup(vim.tbl_deep_extend("force", opts, rust_analyze
 lspconfig['lua_ls'].setup(vim.tbl_deep_extend("force", lua_ls_opts, opts))
 lspconfig['gopls'].setup(opts)
 lspconfig['clangd'].setup(vim.tbl_deep_extend("force", opts, clangd_opts))
+lspconfig['taplo'].setup(opts)
+lspconfig['cmake'].setup(opts)
