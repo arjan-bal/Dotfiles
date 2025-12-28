@@ -3,13 +3,6 @@ vim.opt_local.cmdheight = 2 -- more space in the neovim command line for display
 vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_cmp_ok then
-    return
-end
-
-cmp_nvim_lsp.default_capabilities()
-
 local status, jdtls = pcall(require, "jdtls")
 if not status then
     return
@@ -32,7 +25,7 @@ local config = {
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     cmd = {
         -- 💀
-        home .. "/.sdkman/candidates/java/17.0.9-tem/bin/java",     -- or '/path/to/java17_or_newer/bin/java'
+        home .. "/.sdkman/candidates/java/17.0.9-tem/bin/java", -- or '/path/to/java17_or_newer/bin/java'
         -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -68,7 +61,7 @@ local config = {
     -- 💀
     -- This is the default if not provided, you can remove it. Or adjust as needed.
     -- One dedicated LSP server & client will be started per unique root_dir
-    root_dir = require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'}),
+    root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' }),
 
     -- Here you can configure eclipse.jdt.ls specific settings
     -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request

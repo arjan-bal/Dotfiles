@@ -1,25 +1,5 @@
 return {
     {
-        'hrsh7th/cmp-buffer',
-        lazy = false,
-    },
-    {
-        'hrsh7th/cmp-path',
-        lazy = false,
-    },
-    {
-        'hrsh7th/cmp-nvim-lua',
-        lazy = false,
-    },
-    {
-        'hrsh7th/cmp-nvim-lsp',
-        lazy = false,
-    },
-    {
-        'saadparwaiz1/cmp_luasnip',
-        lazy = false,
-    },
-    {
         'neovim/nvim-lspconfig',
         lazy = false,
         version = "v1.8.0",
