@@ -1,9 +1,9 @@
 local M = {}
 local ok, _ = pcall(require, "telescope")
 if not ok then
-  M.setup = function ()
-  end
-  return M
+    M.setup = function()
+    end
+    return M
 end
 
 local pickers = require "telescope.pickers"
@@ -34,10 +34,10 @@ local live_multigrep = function(opts)
                 table.insert(args, pieces[2])
             end
 
-            return vim.tbl_flatten {
+            return vim.iter({
                 args,
                 { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" }
-            }
+            }):flatten():totable()
         end,
         entry_maker = make_entry.gen_from_vimgrep(opts),
         cwd = opts.cwd

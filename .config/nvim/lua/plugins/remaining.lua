@@ -2,7 +2,9 @@ return {
     {
         'neovim/nvim-lspconfig',
         lazy = false,
-        version = "v1.8.0",
+        dependencies = {
+            'saghen/blink.cmp',
+        },
     },
     {
         'kyazdani42/nvim-web-devicons',
