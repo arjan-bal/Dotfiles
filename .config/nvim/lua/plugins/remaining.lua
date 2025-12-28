@@ -20,10 +20,6 @@ return {
         lazy = false,
     },
     {
-        'jiangmiao/auto-pairs',
-        lazy = false,
-    },
-    {
         'neovim/nvim-lspconfig',
         lazy = false,
         version = "v1.8.0",
