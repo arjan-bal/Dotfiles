@@ -47,8 +47,6 @@ nnoremap <leader>q :bdelete<CR>
 
 " delete without copying to register
 nnoremap <leader>d "_d
-" select all.
-nnoremap <C-a> ggVG
 xnoremap <leader>d "_d
 " paste without popping from register
 xnoremap p "_dp
