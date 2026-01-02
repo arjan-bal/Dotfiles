@@ -2,16 +2,20 @@ return {
     {
         "olimorris/codecompanion.nvim",
         version = "^18.0.0",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        init = function()
+            vim.cmd("cab cc CodeCompanion")
+        end,
+        lazy = true,
         cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
         keys = {
             { "<C-a>",          "<cmd>CodeCompanionActions<cr>",     mode = { "n", "v" }, desc = "CodeCompanion Actions" },
             { "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "Toggle CodeCompanion Chat" },
             { "ga",             "<cmd>CodeCompanionChat Add<cr>",    mode = "v",          desc = "Add selection to CodeCompanion" },
         },
-        init = function()
-            vim.cmd("cab cc CodeCompanion")
-        end,
-        lazy = true,
         opts = {
             display = {
                 chat = {
@@ -43,11 +47,17 @@ return {
                         end
                         return require("codecompanion.adapters.acp").new(adapter)
                     end,
+                    opts = {
+                        show_presets = false,
+                    },
                 },
                 http = {
                     gemini = function()
                         return require("codecompanion.adapters").extend("gemini", {})
                     end,
+                    opts = {
+                        show_presets = false,
+                    },
                 },
             },
             interactions = {
@@ -55,17 +65,13 @@ return {
                     adapter = "gemini_cli_nightly",
                 },
                 inline = {
-                    adapter = "gemini_cli_nightly",
+                    adapter = "gemini",
                 },
                 cmd = {
                     adapter = "gemini_cli_nightly",
                 },
             },
         },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        }
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
