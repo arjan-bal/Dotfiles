@@ -1,10 +1,14 @@
 return {
     {
         'neovim/nvim-lspconfig',
-        lazy = false,
         dependencies = {
             'saghen/blink.cmp',
         },
+        event = { "BufReadPre", "BufNewFile" },
+        lazy = true,
+        config = function()
+            require "lsp".setup()
+        end
     },
     {
         'kyazdani42/nvim-web-devicons',

@@ -1,6 +1,8 @@
 M = {}
 
-require("lsp.handlers").setup()
-require("lsp.lspconfig")
+M.setup = function()
+    require("lsp.handlers").setup()
+    require("lsp.lspconfig")
+end
 
 return M
