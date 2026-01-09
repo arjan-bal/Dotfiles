@@ -31,4 +31,17 @@ return {
         },
         lazy = true,
     },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
+    {
+        'numToStr/Comment.nvim',
+        keys = {
+            { "gcc", mode = "n",          desc = "Comment toggle current line" },
+            { "gc",  mode = { "n", "v" }, desc = "Comment toggle linewise" },
+        },
+        config = true,
+    },
 }
