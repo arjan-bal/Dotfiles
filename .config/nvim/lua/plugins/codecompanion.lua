@@ -5,6 +5,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
+            "j-hui/fidget.nvim",
         },
         init = function()
             vim.cmd("cab cc CodeCompanion")
@@ -72,12 +73,46 @@ return {
                 },
             },
         },
+        config = function(_, opts)
+            require("codecompanion").setup(opts)
+
+            local progress = require("fidget.progress")
+            local handles = {}
+            local group = vim.api.nvim_create_augroup("CodeCompanionFidget", {})
+
+            vim.api.nvim_create_autocmd("User", {
+                pattern  = "CodeCompanionRequestStarted",
+                group    = group,
+                callback = function(e)
+                    handles[e.data.id] = progress.handle.create({
+                        title = "CodeCompanion",
+                        message = "Thinking...",
+                        lsp_client = { name = e.data.adapter.formatted_name },
+                    })
+                end
+            })
+
+            vim.api.nvim_create_autocmd("User", {
+                pattern  = "CodeCompanionRequestFinished",
+                group    = group,
+                callback = function(e)
+                    local h = handles[e.data.id]
+                    if not h then return end
+                    if e.data.status == "success" then
+                        h.message = "Done"
+                    else
+                        h.message = "Failed"
+                    end
+                    h:finish()
+                    handles[e.data.id] = nil
+                end
+            })
+        end
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         ---@module 'render-markdown'
-        ---@type render.md.UserConfig
         opts = {},
         ft = { "markdown", "codecompanion" }
     }
