@@ -24,7 +24,7 @@ local lua_ls_opts = {
 
 local rust_analyzer_opts = {
     settings = {
-        ["rust_analyzer"] = {
+        ["rust-analyzer"] = {
             diagnostics = {
                 styleLints = {
                     enable = true,
@@ -35,7 +35,19 @@ local rust_analyzer_opts = {
             },
             check = {
                 command = "clippy",
-            }
+            },
+            imports = {
+                granularity = {
+                    group = "item",
+                },
+            },
+            rustfmt = {
+                extraArgs = {
+                    "+nightly",
+                    "--config",
+                    "unstable_features=true,group_imports=StdExternalCrate,imports_granularity=Item",
+                },
+            },
         },
     },
     commands = {
