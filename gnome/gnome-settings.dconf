@@ -1,0 +1,49 @@
+# GNOME Custom Overrides (Absolute Paths)
+[org/gnome/desktop/interface]
+clock-show-seconds=false
+clock-show-weekday=true
+color-scheme='prefer-dark'
+cursor-size=24
+cursor-theme='Breeze_Snow'
+enable-animations=false
+enable-hot-corners=false
+font-name='Noto Sans,  10'
+gtk-theme='Breeze'
+icon-theme='Adwaita'
+toolbar-style='text'
+toolkit-accessibility=false
+
+[org/gnome/desktop/wm/keybindings]
+close=['<Super><Shift>c']
+switch-applications=@as []
+switch-applications-backward=@as []
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+switch-to-workspace-5=['<Super>5']
+switch-to-workspace-6=['<Super>6']
+switch-to-workspace-7=['<Super>7']
+switch-to-workspace-8=['<Super>8']
+switch-to-workspace-9=['<Super>9']
+switch-windows=['<Super>Tab', '<Alt>Tab']
+switch-windows-backward=['<Shift><Super>Tab', '<Shift><Alt>Tab']
+
+[org/gnome/desktop/wm/preferences]
+button-layout='icon:minimize,maximize,close'
+focus-mode='sloppy'
+num-workspaces=6
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>Return'
+command='ptyxis --new-window'
+name='Launch terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/mic-mute]
+action='/usr/local/bin/mic-mute-toggle.sh'
+binding='0xf8'
+name='Microphone Mute'
+
