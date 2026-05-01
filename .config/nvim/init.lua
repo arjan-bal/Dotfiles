@@ -13,5 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Source vimrc if it exists
 vim.cmd('source ~/.vimrc')
+pcall(require, "work")
 
 require("lazy").setup("plugins")
